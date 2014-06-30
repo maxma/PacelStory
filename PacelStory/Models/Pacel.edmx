@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PacelDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CampOwner">
+          <Key>
+            <PropertyRef Name="campOwnerId" />
+          </Key>
+          <Property Name="campOwnerId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mobile" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="bit" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="campCodePrefix" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Community">
+          <Key>
+            <PropertyRef Name="communityId" />
+          </Key>
+          <Property Name="communityId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="province" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="district" Type="nvarchar" MaxLength="50" />
+          <Property Name="campname" Type="nvarchar" MaxLength="50" />
+          <Property Name="bldNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="unitNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="roomNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="communityHospital" Type="nvarchar" MaxLength="50" />
+          <Property Name="petLicence" Type="nvarchar" MaxLength="50" />
+          <Property Name="communitySaleDepartment" Type="nvarchar" MaxLength="50" />
+          <Property Name="communityService" Type="nvarchar" MaxLength="50" />
+          <Property Name="communityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="kindergarten" Type="nvarchar" MaxLength="50" />
+          <Property Name="communityHospitalPhone" Type="varchar" MaxLength="50" />
+          <Property Name="petLicencePhone" Type="varchar" MaxLength="50" />
+          <Property Name="communitySaleDepartmentPhone" Type="varchar" MaxLength="50" />
+          <Property Name="communityServicePhone1" Type="varchar" MaxLength="50" />
+          <Property Name="communityServicePhone2" Type="varchar" MaxLength="50" />
+          <Property Name="communityPhone" Type="varchar" MaxLength="50" />
+          <Property Name="kindergartenPhone" Type="varchar" MaxLength="50" />
+          <Property Name="campCode" Type="varchar" MaxLength="50" />
+          <Property Name="campOwnerMobile" Type="varchar" MaxLength="50" />
+          <Property Name="groupName2" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName3" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName4" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName5" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName6" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName7" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName8" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName9" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName1" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customerId" />
+          </Key>
+          <Property Name="customerId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mobile" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="bit" />
+          <Property Name="province" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="district" Type="nvarchar" MaxLength="50" />
+          <Property Name="campname" Type="nvarchar" MaxLength="50" />
+          <Property Name="bldNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="unitNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="roomNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="validationCode" Type="varchar" MaxLength="50" />
+          <Property Name="deviceinfo" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="communityId" Type="bigint" />
+          <Property Name="validationCodeTime" Type="datetime2" Precision="7" />
+          <Property Name="campCode" Type="varchar" MaxLength="50" />
+          <Property Name="groupName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pacel">
+          <Key>
+            <PropertyRef Name="pacelId" />
+          </Key>
+          <Property Name="pacelId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="arrivedDate" Type="datetime2" Precision="7" />
+          <Property Name="signDate" Type="datetime2" Precision="7" />
+          <Property Name="signname" Type="nvarchar" MaxLength="50" />
+          <Property Name="customerId" Type="bigint" />
+          <Property Name="province" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="district" Type="nvarchar" MaxLength="50" />
+          <Property Name="campname" Type="nvarchar" MaxLength="50" />
+          <Property Name="bldNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="unitNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="roomNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="communityId" Type="bigint" />
+          <Property Name="logisticsId" Type="nvarchar" MaxLength="50" />
+          <Property Name="twoDCode" Type="varchar" MaxLength="200" />
+          <Property Name="groupName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SignedPacel">
+          <Key>
+            <PropertyRef Name="pacelId" />
+          </Key>
+          <Property Name="pacelId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="arrivedDate" Type="datetime2" Precision="7" />
+          <Property Name="signDate" Type="datetime2" Precision="7" />
+          <Property Name="signname" Type="nvarchar" MaxLength="50" />
+          <Property Name="customerId" Type="bigint" />
+          <Property Name="province" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="district" Type="nvarchar" MaxLength="50" />
+          <Property Name="campname" Type="nvarchar" MaxLength="50" />
+          <Property Name="bldNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="unitNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="roomNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="communityId" Type="bigint" />
+        </EntityType>
+        <EntityContainer Name="PacelDbModelStoreContainer">
+          <EntitySet Name="CampOwner" EntityType="Self.CampOwner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Community" EntityType="Self.Community" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacel" EntityType="Self.Pacel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SignedPacel" EntityType="Self.SignedPacel" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PacelDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CampOwner">
+          <Key>
+            <PropertyRef Name="campOwnerId" />
+          </Key>
+          <Property Name="campOwnerId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="Boolean" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="campCodePrefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Community">
+          <Key>
+            <PropertyRef Name="communityId" />
+          </Key>
+          <Property Name="communityId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="campname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unitNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="roomNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="communityHospital" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="petLicence" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="communitySaleDepartment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="communityService" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="communityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kindergarten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="communityHospitalPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="petLicencePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="communitySaleDepartmentPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="communityServicePhone1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="communityServicePhone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="communityPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kindergartenPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="campCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="campOwnerMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="groupName2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customerId" />
+          </Key>
+          <Property Name="customerId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="Boolean" />
+          <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="campname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unitNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="roomNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="validationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="deviceinfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="communityId" Type="Int64" />
+          <Property Name="validationCodeTime" Type="DateTime" Precision="7" />
+          <Property Name="campCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="groupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Pacel">
+          <Key>
+            <PropertyRef Name="pacelId" />
+          </Key>
+          <Property Name="pacelId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="arrivedDate" Type="DateTime" Precision="7" />
+          <Property Name="signDate" Type="DateTime" Precision="7" />
+          <Property Name="signname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customerId" Type="Int64" />
+          <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="campname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unitNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="roomNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="communityId" Type="Int64" />
+          <Property Name="logisticsId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="twoDCode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="groupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SignedPacel">
+          <Key>
+            <PropertyRef Name="pacelId" />
+          </Key>
+          <Property Name="pacelId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="arrivedDate" Type="DateTime" Precision="7" />
+          <Property Name="signDate" Type="DateTime" Precision="7" />
+          <Property Name="signname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customerId" Type="Int64" />
+          <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="campname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="unitNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="roomNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="communityId" Type="Int64" />
+        </EntityType>
+        <EntityContainer Name="PacelDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CampOwner" EntityType="Self.CampOwner" />
+          <EntitySet Name="Community" EntityType="Self.Community" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Pacel" EntityType="Self.Pacel" />
+          <EntitySet Name="SignedPacel" EntityType="Self.SignedPacel" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PacelDbModelStoreContainer" CdmEntityContainer="PacelDbEntities">
+          <EntitySetMapping Name="CampOwner">
+            <EntityTypeMapping TypeName="PacelDbModel.CampOwner">
+              <MappingFragment StoreEntitySet="CampOwner">
+                <ScalarProperty Name="campOwnerId" ColumnName="campOwnerId" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="campCodePrefix" ColumnName="campCodePrefix" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Community">
+            <EntityTypeMapping TypeName="PacelDbModel.Community">
+              <MappingFragment StoreEntitySet="Community">
+                <ScalarProperty Name="communityId" ColumnName="communityId" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="campname" ColumnName="campname" />
+                <ScalarProperty Name="bldNumber" ColumnName="bldNumber" />
+                <ScalarProperty Name="unitNumber" ColumnName="unitNumber" />
+                <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+                <ScalarProperty Name="communityHospital" ColumnName="communityHospital" />
+                <ScalarProperty Name="petLicence" ColumnName="petLicence" />
+                <ScalarProperty Name="communitySaleDepartment" ColumnName="communitySaleDepartment" />
+                <ScalarProperty Name="communityService" ColumnName="communityService" />
+                <ScalarProperty Name="communityName" ColumnName="communityName" />
+                <ScalarProperty Name="kindergarten" ColumnName="kindergarten" />
+                <ScalarProperty Name="communityHospitalPhone" ColumnName="communityHospitalPhone" />
+                <ScalarProperty Name="petLicencePhone" ColumnName="petLicencePhone" />
+                <ScalarProperty Name="communitySaleDepartmentPhone" ColumnName="communitySaleDepartmentPhone" />
+                <ScalarProperty Name="communityServicePhone1" ColumnName="communityServicePhone1" />
+                <ScalarProperty Name="communityServicePhone2" ColumnName="communityServicePhone2" />
+                <ScalarProperty Name="communityPhone" ColumnName="communityPhone" />
+                <ScalarProperty Name="kindergartenPhone" ColumnName="kindergartenPhone" />
+                <ScalarProperty Name="campCode" ColumnName="campCode" />
+                <ScalarProperty Name="campOwnerMobile" ColumnName="campOwnerMobile" />
+                <ScalarProperty Name="groupName2" ColumnName="groupName2" />
+                <ScalarProperty Name="groupName3" ColumnName="groupName3" />
+                <ScalarProperty Name="groupName4" ColumnName="groupName4" />
+                <ScalarProperty Name="groupName5" ColumnName="groupName5" />
+                <ScalarProperty Name="groupName6" ColumnName="groupName6" />
+                <ScalarProperty Name="groupName7" ColumnName="groupName7" />
+                <ScalarProperty Name="groupName8" ColumnName="groupName8" />
+                <ScalarProperty Name="groupName9" ColumnName="groupName9" />
+                <ScalarProperty Name="groupName1" ColumnName="groupName1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="PacelDbModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="campname" ColumnName="campname" />
+                <ScalarProperty Name="bldNumber" ColumnName="bldNumber" />
+                <ScalarProperty Name="unitNumber" ColumnName="unitNumber" />
+                <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+                <ScalarProperty Name="validationCode" ColumnName="validationCode" />
+                <ScalarProperty Name="deviceinfo" ColumnName="deviceinfo" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="communityId" ColumnName="communityId" />
+                <ScalarProperty Name="validationCodeTime" ColumnName="validationCodeTime" />
+                <ScalarProperty Name="campCode" ColumnName="campCode" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacel">
+            <EntityTypeMapping TypeName="PacelDbModel.Pacel">
+              <MappingFragment StoreEntitySet="Pacel">
+                <ScalarProperty Name="pacelId" ColumnName="pacelId" />
+                <ScalarProperty Name="arrivedDate" ColumnName="arrivedDate" />
+                <ScalarProperty Name="signDate" ColumnName="signDate" />
+                <ScalarProperty Name="signname" ColumnName="signname" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="campname" ColumnName="campname" />
+                <ScalarProperty Name="bldNumber" ColumnName="bldNumber" />
+                <ScalarProperty Name="unitNumber" ColumnName="unitNumber" />
+                <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="communityId" ColumnName="communityId" />
+                <ScalarProperty Name="logisticsId" ColumnName="logisticsId" />
+                <ScalarProperty Name="twoDCode" ColumnName="twoDCode" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SignedPacel">
+            <EntityTypeMapping TypeName="PacelDbModel.SignedPacel">
+              <MappingFragment StoreEntitySet="SignedPacel">
+                <ScalarProperty Name="pacelId" ColumnName="pacelId" />
+                <ScalarProperty Name="arrivedDate" ColumnName="arrivedDate" />
+                <ScalarProperty Name="signDate" ColumnName="signDate" />
+                <ScalarProperty Name="signname" ColumnName="signname" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="campname" ColumnName="campname" />
+                <ScalarProperty Name="bldNumber" ColumnName="bldNumber" />
+                <ScalarProperty Name="unitNumber" ColumnName="unitNumber" />
+                <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="communityId" ColumnName="communityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
