@@ -46,6 +46,24 @@ namespace PacelStory.Controllers
             }
         }
 
+        // GET api/get 
+        [Route("api/Pacel/GetUnsignedPacelsByCommunityId/{communityId}/{pageNumber}")]
+        [HttpGet]
+        //[ActionName("UnSigned")]
+        public List<Pacel> GetUnsignedPacelsByCommunityId(long communityId, int pageNumber)
+        {
+            if (!IsParamValid(communityId, pageNumber))
+            {
+                return null;
+            }
+            else
+            {
+                return pr.GetUnSignedPacelsByCommunityId(communityId, pageNumber).ToList();
+            }
+        }
+        
+
+
         [HttpGet]
         [ActionName("Signed")]
         public List<Pacel> GetSignedPacelsByCustomerId(long customerId, int pageNumber)
@@ -87,8 +105,8 @@ namespace PacelStory.Controllers
                 return pr.GetSpecifiedPacel(pacelId);
             }
         }
-        
 
+        
         // POST api/values
         [HttpPost]
         [ActionName("CreatePacel")]

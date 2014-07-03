@@ -10,6 +10,10 @@ namespace PacelStory
     {
         public static void Register(HttpConfiguration config)
         {
+            // Web API routes   web api 2 arrtibute routing
+            config.MapHttpAttributeRoutes();
+
+            // 传统路由
             config.Routes.MapHttpRoute
                 (
                 name: "SpecifiedCustomer",

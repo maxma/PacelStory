@@ -48,6 +48,48 @@ namespace PacelStory.Repositories
             }
         }
 
+        /// <summary>
+        /// 拿出此物业还没有被取走的包裹
+        /// </summary>
+        /// <param name="communityId"></param>
+        /// <param name="pageNumber"></param>
+        /// <returns></returns>
+        public IEnumerable<Pacel> GetUnSignedPacelsByCommunityId(long communityId, int pageNumber)
+        {
+            using (PacelDbEntities entities = new PacelDbEntities())
+            {
+                List<Pacel> pacelList = new List<Pacel>();
+                //List<ArticleWithImageList> articleListWithImageList = new List<ArticleWithImageList>();
+
+                int innerRows = -1;
+                try
+                {
+                    innerRows = (pageNumber - 1) * pageSize;
+                }
+                catch (Exception)
+                {
+                    throw new Exception("pageNumber or pageSize is not INT");
+                }
+
+                if (innerRows != -1)
+                {
+                    pacelList = entities.Pacel.Where(x => x.communityId == communityId && x.type == "0").OrderByDescending(i => i.arrivedDate).Skip(innerRows).Take(pageSize).ToList<Pacel>();
+
+                    return pacelList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 通过快递单号获取包裹
+        /// </summary>
+        /// <param name="logisticsId"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public Pacel GetPacelByLogisticsId(string logisticsId, long customerId)
         {
             using (PacelDbEntities entities = new PacelDbEntities())

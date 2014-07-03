@@ -20,6 +20,7 @@ namespace PacelStory.Controllers
         CustomerRepository customerRepository = new CustomerRepository();
 
         // POST api/values     H5 验证用户名密码 调用此接口
+        
         [HttpGet]
         [ActionName("CheckCampOwnerCode")]
         public HttpResponseMessage CheckCampOwnerCode(string username, string pwd)

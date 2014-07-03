@@ -87,6 +87,7 @@ namespace PacelStory.Controllers
                         pacelAndCustomer.pacel.district = wuye.district;
                         pacelAndCustomer.pacel.campname = wuye.campname;
                         pacelAndCustomer.pacel.arrivedDate = DateTime.Now;
+                        pacelAndCustomer.pacel.communityId = wuye.communityId;
 
                         // 生成二维码文件名 文件名以用户id + 日期命名
                         string codename = effectedCustomerId.ToString() + "qrcode";
