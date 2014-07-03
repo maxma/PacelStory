@@ -8,6 +8,8 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using PacelStory.Repositories;
+using PacelStory.Models;
 
 
 namespace PacelStory.Utilities
@@ -17,6 +19,7 @@ namespace PacelStory.Utilities
         public static string ipAddress = "http://122.10.117.234";
         public static string serverImageUrl = ipAddress + ":81/Images/QrCode/";
         public static string downloadUrl = ipAddress + ":81/PackageDownload/Package";
+        public static string productName = "【指尖社区】";
 
         // 生成唯一文件名
         public static string GenerateUniqueFileName(string filename)
@@ -103,6 +106,33 @@ namespace PacelStory.Utilities
             rd.message = message;
 
             return rd;
+        }
+
+        public static int SendText(string targetMobile, string tempString1, string tempString2, string content)
+        {
+            TextRepository tr = new TextRepository();
+            // struct textFormat
+            tbl_smsmt_send textFormat = new tbl_smsmt_send();
+            textFormat.account = "2521494";
+            textFormat.mobile = targetMobile;
+
+            //string productName = "【指尖社区】";
+
+
+            textFormat.content = content;
+            textFormat.smsid = "0567898f30e658dbff5a";
+            textFormat.priority = 1;
+            textFormat.SubmitTime = DateTime.Now;
+
+            int sendSuccess = tr.CreateText(textFormat);
+            if(sendSuccess != 0)
+            {
+                return 0;
+            }
+            else
+            { 
+                return -1;
+            }
         }
       
 

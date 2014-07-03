@@ -112,23 +112,27 @@ namespace PacelStory.Controllers
                         returnPacelId = tempPacel.pacelId;
                     }
 
-                    #region send pacel text
                     // 发 物流包裹 短信  
-                    TextRepository tr = new TextRepository();
-                    // struct textFormat
-                    tbl_smsmt_send textFormat = new tbl_smsmt_send();
-                    textFormat.account = "2521494";
-                    textFormat.mobile = tempCustomer.mobile;
+                    #region send pacel text
 
-                    string productName = "【指尖社区】";
+                    string content = pacelAndCustomer.customer.campname + "物业提醒您, 您有一个包裹已经达到物业，请安排好时间及时领取。" + CommonUtility.productName + " 物业已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                    CommonUtility.SendText(tempCustomer.mobile, "", "", content);
+                    
+                    //TextRepository tr = new TextRepository();
+                    //// struct textFormat
+                    //tbl_smsmt_send textFormat = new tbl_smsmt_send();
+                    //textFormat.account = "2521494";
+                    //textFormat.mobile = tempCustomer.mobile;
+
+                    //string productName = "【指尖社区】";
                  
                     
-                    textFormat.content = pacelAndCustomer.customer.campname + "物业提醒您, 您有一个包裹已经达到物业，请安排好时间及时领取。" + productName + " 物业已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
-                    textFormat.smsid = "0567898f30e658dbff5a";
-                    textFormat.priority = 1;
-                    textFormat.SubmitTime = DateTime.Now;
+                    //textFormat.content = pacelAndCustomer.customer.campname + "物业提醒您, 您有一个包裹已经达到物业，请安排好时间及时领取。" + productName + " 物业已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                    //textFormat.smsid = "0567898f30e658dbff5a";
+                    //textFormat.priority = 1;
+                    //textFormat.SubmitTime = DateTime.Now;
 
-                    int sendSuccess = tr.CreateText(textFormat);
+                    //int sendSuccess = tr.CreateText(textFormat);
                     #endregion
 
                     if (effectedCustomerId != 0 && returnPacelId != 0)

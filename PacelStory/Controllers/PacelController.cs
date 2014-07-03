@@ -49,6 +49,7 @@ namespace PacelStory.Controllers
         // GET api/get 
         [Route("api/Pacel/GetUnsignedPacelsByCommunityId/{communityId}/{pageNumber}")]
         [HttpGet]
+        [Authorize]
         //[ActionName("UnSigned")]
         public List<Pacel> GetUnsignedPacelsByCommunityId(long communityId, int pageNumber)
         {
