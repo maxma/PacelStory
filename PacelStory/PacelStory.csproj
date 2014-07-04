@@ -202,6 +202,7 @@
     <Compile Include="Controllers\PacelAndCustomerController.cs" />
     <Compile Include="Controllers\PacelController.cs" />
     <Compile Include="Controllers\PackageDownloadController.cs" />
+    <Compile Include="Controllers\ResendController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -263,8 +264,10 @@
     <Compile Include="Repositories\ICommunityRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Repositories\IPacelRepository.cs" />
+    <Compile Include="Repositories\IResendRepository.cs" />
     <Compile Include="Repositories\PacelAndCustomerRepository.cs" />
     <Compile Include="Repositories\PacelRepository.cs" />
+    <Compile Include="Repositories\ResendRepository.cs" />
     <Compile Include="Repositories\TextRepository.cs" />
     <Compile Include="Utilities\CommonUtility.cs" />
     <Compile Include="Utilities\QrCodeUtility.cs" />
