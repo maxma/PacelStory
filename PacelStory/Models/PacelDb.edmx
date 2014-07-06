@@ -98,6 +98,7 @@
           <Property Name="communityId" Type="bigint" />
           <Property Name="logisticsId" Type="nvarchar" MaxLength="50" />
           <Property Name="twoDCode" Type="varchar" MaxLength="200" />
+          <Property Name="wuyeId" Type="bigint" />
         </EntityType>
         <EntityType Name="Resend">
           <Key>
@@ -231,6 +232,7 @@
           <Property Name="communityId" Type="Int64" />
           <Property Name="logisticsId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="twoDCode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="wuyeId" Type="Int64" />
         </EntityType>
         <EntityType Name="Resend">
           <Key>
@@ -367,6 +369,7 @@
                 <ScalarProperty Name="communityId" ColumnName="communityId" />
                 <ScalarProperty Name="logisticsId" ColumnName="logisticsId" />
                 <ScalarProperty Name="twoDCode" ColumnName="twoDCode" />
+                <ScalarProperty Name="wuyeId" ColumnName="wuyeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

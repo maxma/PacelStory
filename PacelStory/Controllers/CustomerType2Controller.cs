@@ -126,7 +126,7 @@ namespace PacelStory.Controllers
                     }
                     else
                     {
-                        string content = wuye.campname + community.communityService + "提醒您, 您有一个包裹已经达到物业，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                        string content = wuye.campname == null ? "" : wuye.campname + community.communityService == null ? "" : community.communityService + "提醒您, 您有一个包裹已经达到物业，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
                         CommonUtility.SendText(tempCustomer.mobile, "", "", content);
                     }
 
