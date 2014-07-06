@@ -108,7 +108,7 @@ namespace PacelStory.Utilities
             return rd;
         }
 
-        public static int SendText(string targetMobile, string tempString1, string tempString2, string content)
+        public static int SendText(string targetMobile, string communityService, string tempString2, string content)
         {
             TextRepository tr = new TextRepository();
             // struct textFormat

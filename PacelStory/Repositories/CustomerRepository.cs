@@ -52,7 +52,20 @@ namespace PacelStory.Repositories
             {
                 Customer specifiedCustomer = new Customer();
 
-                specifiedCustomer = entities.Customer.SingleOrDefault<Customer>(x => x.customerId == id);
+                specifiedCustomer = entities.Customer.SingleOrDefault<Customer>(x => x.customerId == id && x.type == "0");
+
+                return specifiedCustomer;
+
+            }
+        }
+
+        public Customer GetSpecifiedCustomerType2ById(long id)
+        {
+            using (PacelDbEntities entities = new PacelDbEntities())
+            {
+                Customer specifiedCustomer = new Customer();
+
+                specifiedCustomer = entities.Customer.SingleOrDefault<Customer>(x => x.customerId == id && x.type == "1");
 
                 return specifiedCustomer;
 

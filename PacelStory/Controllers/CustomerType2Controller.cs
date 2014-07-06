@@ -48,6 +48,11 @@ namespace PacelStory.Controllers
 
                     // 获取物业人员信息
                     Customer wuye = cr.GetSpecifiedCustomerType2ByMoble(pacelAndCustomer.wuyeMobile);
+                    if(wuye == null)
+                    {
+                        rs = CommonUtility.FormatResponseString(-1, "Failed,wuye does not exist!");
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, rs);
+                    }
 
                     if (tempCustomer == null)
                     {
@@ -75,9 +80,6 @@ namespace PacelStory.Controllers
 
                     if (tempPacel == null)
                     {
-                        // 利用物业人员信息丰富包裹信息
-                        //Customer wuye = cr.GetSpecifiedCustomerType2ByMoble(pacelAndCustomer.wuyeMobile);
-
                         // 直接存储 包裹, 存储包裹之前，将存在用户的customerId 赋给pacel对象里的 customerId
                         pacelAndCustomer.pacel.customerId = effectedCustomerId;
                         pacelAndCustomer.pacel.type = "0";
@@ -88,6 +90,7 @@ namespace PacelStory.Controllers
                         pacelAndCustomer.pacel.campname = wuye.campname;
                         pacelAndCustomer.pacel.arrivedDate = DateTime.Now;
                         pacelAndCustomer.pacel.communityId = wuye.communityId;
+                        pacelAndCustomer.pacel.wuyeId = wuye.customerId;
 
                         // 生成二维码文件名 文件名以用户id + 日期命名
                         string codename = effectedCustomerId.ToString() + "qrcode";
@@ -115,8 +118,19 @@ namespace PacelStory.Controllers
                     // 发 物流包裹 短信  
                     #region send pacel text
 
-                    string content = pacelAndCustomer.customer.campname + "物业提醒您, 您有一个包裹已经达到物业，请安排好时间及时领取。" + CommonUtility.productName + " 物业已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
-                    CommonUtility.SendText(tempCustomer.mobile, "", "", content);
+                    Community community = communityRepo.GetSpecifiedCommunityById((long)wuye.communityId);
+                    if(community == null)
+                    {
+                        rs = CommonUtility.FormatResponseString(-1, "Failed,community does not exist!");
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, rs);
+                    }
+                    else
+                    {
+                        string content = wuye.campname + community.communityService + "提醒您, 您有一个包裹已经达到物业，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                        CommonUtility.SendText(tempCustomer.mobile, "", "", content);
+                    }
+
+                    
                     
                     //TextRepository tr = new TextRepository();
                     //// struct textFormat

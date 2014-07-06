@@ -1,4 +1,5 @@
-﻿using PacelStory.Repositories;
+﻿using PacelStory.Models;
+using PacelStory.Repositories;
 using PacelStory.Utilities;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,95 @@ namespace PacelStory.Controllers
 
         ResendRepository resendRepositoy = new ResendRepository();
         PacelRepository pacelRepository = new PacelRepository();
+        CustomerRepository customerRepository = new CustomerRepository();
+        CommunityRepository communityRepo = new CommunityRepository();
 
         PacelResponseString prs = new PacelResponseString();
 
-        public int ResendText(long pacelId)
+        [Route("api/Resend/ReText/{pacelId}")]
+        [HttpPost]
+        [Authorize]
+        public HttpResponseMessage ResendText(long pacelId)
         {
-            if(pacelId)
+            long resendReturnedId = 0;
 
-            return 0;
+            if(pacelId > 0)
+            {
+                // 在Pacel表里找到这条记录，后面会根据 pacel表里的 customerId 获取targetMobile, 获取campName
+                Pacel pacel = pacelRepository.GetSpecifiedPacel(pacelId);
+                if(pacel == null)
+                {
+                    prs = CommonUtility.FormatPacelResponseString(-1, pacelId, "Failed,pacel does not exist");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, prs);
+                }
+                else
+                {
+                    Customer customer = customerRepository.GetSpecifiedCustomerById((long)pacel.customerId);
+                    Customer wuye = customerRepository.GetSpecifiedCustomerType2ById((long)pacel.wuyeId);
+                    if (customer == null || wuye == null) // 如果用户不存在，返回错误
+                    {
+                        prs = CommonUtility.FormatPacelResponseString(-1, pacelId, "Failed,wuye or customer does not exist");
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, prs);
+                    }
+                    else
+                    {
+                        // 获取resend表里信息，看是否是第一次催促
+                        Resend resend = resendRepositoy.GetSpecifiedResendByPacelId(pacelId);
+
+                        if (resend == null)   // 如果这个包裹是第一次催促拿取，在数据库中创建一条记录
+                        {
+                            Resend resendCreated = new Resend();
+                            resendCreated.pacelId = pacelId;
+                            resendCreated.resendTime = DateTime.Now;
+                            resendReturnedId = resendRepositoy.CreateResend(resendCreated);
+                            if (resendReturnedId > 0)
+                            {
+                                // 发送一条短信
+                                Community community = communityRepo.GetSpecifiedCommunityById((long)pacel.wuyeId);
+
+                                string messageText = wuye.campname + community.communityService + "希望您快点来领包裹啦, 您有一个包裹存在物业超过1天，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;                             
+                                CommonUtility.SendText(customer.mobile, "", "", messageText);
+
+                                prs = CommonUtility.FormatPacelResponseString(0, pacelId, "Succeed,created items in db success");
+                                return Request.CreateResponse(HttpStatusCode.Created, prs);
+                            }
+                            else
+                            {
+                                prs = CommonUtility.FormatPacelResponseString(-1, pacelId, "Failed,can not save to the db");
+                                return Request.CreateResponse(HttpStatusCode.OK, prs);
+                            }
+                        }
+                        // 如果这个包裹是重复催促拿取，在数据库中更新一下催促拿取的时间
+                        else
+                        {
+                            TimeSpan span = DateTime.Now.Subtract((DateTime)resend.resendTime);
+                            if (span.Days >= 1)  // 一个自然天内只能催促一次
+                            {
+                                // 发送一条短信
+                                string messageText = customer.campname + "物业希望您快点来领包裹啦, 您有一个包裹存在物业超过1天，请安排好时间及时领取。" + CommonUtility.productName + " 物业已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                                CommonUtility.SendText(customer.mobile, "", "", messageText);
+
+                                prs = CommonUtility.FormatPacelResponseString(0, pacelId, "Succeed,resend text");
+                                return Request.CreateResponse(HttpStatusCode.Created, prs);
+                            }
+                            else
+                            {
+                                // 一个自然天内催促多次，返回failed
+                                prs = CommonUtility.FormatPacelResponseString(-1, pacelId, "Failed,one day one text");
+                                return Request.CreateResponse(HttpStatusCode.OK, prs);
+                            }
+                        }
+                    }
+                    
+                }
+
+            }
+            else
+            {
+                prs = CommonUtility.FormatPacelResponseString(-1, pacelId, "Failed,param not invalid");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, prs);
+            }
+
         }
 
     }

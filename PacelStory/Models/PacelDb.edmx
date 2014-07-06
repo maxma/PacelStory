@@ -26,6 +26,15 @@
           <Property Name="city" Type="nvarchar" MaxLength="50" />
           <Property Name="district" Type="nvarchar" MaxLength="50" />
           <Property Name="campname" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName1" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName2" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName3" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName4" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName5" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName6" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName7" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName8" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName9" Type="nvarchar" MaxLength="50" />
           <Property Name="bldNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="unitNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="roomNumber" Type="nvarchar" MaxLength="50" />
@@ -44,15 +53,6 @@
           <Property Name="kindergartenPhone" Type="varchar" MaxLength="50" />
           <Property Name="campCode" Type="varchar" MaxLength="50" />
           <Property Name="campOwnerMobile" Type="varchar" MaxLength="50" />
-          <Property Name="groupName2" Type="nvarchar" MaxLength="50" />
-          <Property Name="groupName3" Type="nvarchar" MaxLength="50" />
-          <Property Name="groupName4" Type="nvarchar" MaxLength="50" />
-          <Property Name="groupName5" Type="nvarchar" MaxLength="50" />
-          <Property Name="groupName6" Type="nvarchar" MaxLength="50" />
-          <Property Name="groupName7" Type="nvarchar" MaxLength="50" />
-          <Property Name="groupName8" Type="nvarchar" MaxLength="50" />
-          <Property Name="groupName9" Type="nvarchar" MaxLength="50" />
-          <Property Name="groupName1" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -66,6 +66,7 @@
           <Property Name="city" Type="nvarchar" MaxLength="50" />
           <Property Name="district" Type="nvarchar" MaxLength="50" />
           <Property Name="campname" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName" Type="nvarchar" MaxLength="50" />
           <Property Name="bldNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="unitNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="roomNumber" Type="nvarchar" MaxLength="50" />
@@ -75,7 +76,6 @@
           <Property Name="communityId" Type="bigint" />
           <Property Name="validationCodeTime" Type="datetime2" Precision="7" />
           <Property Name="campCode" Type="varchar" MaxLength="50" />
-          <Property Name="groupName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Pacel">
           <Key>
@@ -90,6 +90,7 @@
           <Property Name="city" Type="nvarchar" MaxLength="50" />
           <Property Name="district" Type="nvarchar" MaxLength="50" />
           <Property Name="campname" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupName" Type="nvarchar" MaxLength="50" />
           <Property Name="bldNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="unitNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="roomNumber" Type="nvarchar" MaxLength="50" />
@@ -97,7 +98,13 @@
           <Property Name="communityId" Type="bigint" />
           <Property Name="logisticsId" Type="nvarchar" MaxLength="50" />
           <Property Name="twoDCode" Type="varchar" MaxLength="200" />
-          <Property Name="groupName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Resend">
+          <Key>
+            <PropertyRef Name="pacelId" />
+          </Key>
+          <Property Name="pacelId" Type="bigint" Nullable="false" />
+          <Property Name="resendTime" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="SignedPacel">
           <Key>
@@ -123,6 +130,7 @@
           <EntitySet Name="Community" EntityType="Self.Community" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pacel" EntityType="Self.Pacel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resend" EntityType="Self.Resend" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SignedPacel" EntityType="Self.SignedPacel" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
@@ -151,6 +159,15 @@
           <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="campname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="bldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="unitNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="roomNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -169,15 +186,6 @@
           <Property Name="kindergartenPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="campCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="campOwnerMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="groupName2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="groupName3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="groupName4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="groupName5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="groupName6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="groupName7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="groupName8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="groupName9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="groupName1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -191,6 +199,7 @@
           <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="campname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="bldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="unitNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="roomNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -200,7 +209,6 @@
           <Property Name="communityId" Type="Int64" />
           <Property Name="validationCodeTime" Type="DateTime" Precision="7" />
           <Property Name="campCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="groupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Pacel">
           <Key>
@@ -215,6 +223,7 @@
           <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="campname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="bldNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="unitNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="roomNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -222,7 +231,13 @@
           <Property Name="communityId" Type="Int64" />
           <Property Name="logisticsId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="twoDCode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="groupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Resend">
+          <Key>
+            <PropertyRef Name="pacelId" />
+          </Key>
+          <Property Name="pacelId" Type="Int64" Nullable="false" />
+          <Property Name="resendTime" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="SignedPacel">
           <Key>
@@ -248,6 +263,7 @@
           <EntitySet Name="Community" EntityType="Self.Community" />
           <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="Pacel" EntityType="Self.Pacel" />
+          <EntitySet Name="Resend" EntityType="Self.Resend" />
           <EntitySet Name="SignedPacel" EntityType="Self.SignedPacel" />
         </EntityContainer>
       </Schema>
@@ -277,6 +293,15 @@
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="district" ColumnName="district" />
                 <ScalarProperty Name="campname" ColumnName="campname" />
+                <ScalarProperty Name="groupName1" ColumnName="groupName1" />
+                <ScalarProperty Name="groupName2" ColumnName="groupName2" />
+                <ScalarProperty Name="groupName3" ColumnName="groupName3" />
+                <ScalarProperty Name="groupName4" ColumnName="groupName4" />
+                <ScalarProperty Name="groupName5" ColumnName="groupName5" />
+                <ScalarProperty Name="groupName6" ColumnName="groupName6" />
+                <ScalarProperty Name="groupName7" ColumnName="groupName7" />
+                <ScalarProperty Name="groupName8" ColumnName="groupName8" />
+                <ScalarProperty Name="groupName9" ColumnName="groupName9" />
                 <ScalarProperty Name="bldNumber" ColumnName="bldNumber" />
                 <ScalarProperty Name="unitNumber" ColumnName="unitNumber" />
                 <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
@@ -295,15 +320,6 @@
                 <ScalarProperty Name="kindergartenPhone" ColumnName="kindergartenPhone" />
                 <ScalarProperty Name="campCode" ColumnName="campCode" />
                 <ScalarProperty Name="campOwnerMobile" ColumnName="campOwnerMobile" />
-                <ScalarProperty Name="groupName2" ColumnName="groupName2" />
-                <ScalarProperty Name="groupName3" ColumnName="groupName3" />
-                <ScalarProperty Name="groupName4" ColumnName="groupName4" />
-                <ScalarProperty Name="groupName5" ColumnName="groupName5" />
-                <ScalarProperty Name="groupName6" ColumnName="groupName6" />
-                <ScalarProperty Name="groupName7" ColumnName="groupName7" />
-                <ScalarProperty Name="groupName8" ColumnName="groupName8" />
-                <ScalarProperty Name="groupName9" ColumnName="groupName9" />
-                <ScalarProperty Name="groupName1" ColumnName="groupName1" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -318,6 +334,7 @@
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="district" ColumnName="district" />
                 <ScalarProperty Name="campname" ColumnName="campname" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
                 <ScalarProperty Name="bldNumber" ColumnName="bldNumber" />
                 <ScalarProperty Name="unitNumber" ColumnName="unitNumber" />
                 <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
@@ -327,7 +344,6 @@
                 <ScalarProperty Name="communityId" ColumnName="communityId" />
                 <ScalarProperty Name="validationCodeTime" ColumnName="validationCodeTime" />
                 <ScalarProperty Name="campCode" ColumnName="campCode" />
-                <ScalarProperty Name="groupName" ColumnName="groupName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -343,6 +359,7 @@
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="district" ColumnName="district" />
                 <ScalarProperty Name="campname" ColumnName="campname" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
                 <ScalarProperty Name="bldNumber" ColumnName="bldNumber" />
                 <ScalarProperty Name="unitNumber" ColumnName="unitNumber" />
                 <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
@@ -350,7 +367,14 @@
                 <ScalarProperty Name="communityId" ColumnName="communityId" />
                 <ScalarProperty Name="logisticsId" ColumnName="logisticsId" />
                 <ScalarProperty Name="twoDCode" ColumnName="twoDCode" />
-                <ScalarProperty Name="groupName" ColumnName="groupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resend">
+            <EntityTypeMapping TypeName="PacelDbModel.Resend">
+              <MappingFragment StoreEntitySet="Resend">
+                <ScalarProperty Name="pacelId" ColumnName="pacelId" />
+                <ScalarProperty Name="resendTime" ColumnName="resendTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -390,7 +414,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

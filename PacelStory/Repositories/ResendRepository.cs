@@ -8,13 +8,13 @@ namespace PacelStory.Repositories
 {
     public class ResendRepository : IResendRepository
     {
-        public Resend GetResendByPacelId(long pacelId)
+        public Resend GetSpecifiedResendByPacelId(long pacelId)
         {
             using (PacelDbEntities entities = new PacelDbEntities())
             {
                 Resend specifiedResend = new Resend();
 
-                specifiedResend = entities.Pacel.SingleOrDefault<Resend>(x => x.pacelId == pacelId);
+                specifiedResend = entities.Resend.SingleOrDefault<Resend>(x => x.pacelId == pacelId);
 
                 return specifiedResend;
             }

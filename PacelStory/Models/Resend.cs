@@ -12,14 +12,9 @@ namespace PacelStory.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CampOwner
+    public partial class Resend
     {
-        public long campOwnerId { get; set; }
-        public string mobile { get; set; }
-        public string username { get; set; }
-        public Nullable<bool> gender { get; set; }
-        public string type { get; set; }
-        public string campCodePrefix { get; set; }
-        public string password { get; set; }
+        public long pacelId { get; set; }
+        public System.DateTime resendTime { get; set; }
     }
 }
