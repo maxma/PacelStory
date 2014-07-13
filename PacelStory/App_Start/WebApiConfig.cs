@@ -32,7 +32,6 @@ namespace PacelStory
                 name: "SpecifiedCommunityByMobile",
                 routeTemplate: "api/{controller}/SpecifiedCommunityByMobile/{mobile}"
                 );
-
             
 
             config.Routes.MapHttpRoute

@@ -203,6 +203,7 @@
     <Compile Include="Controllers\PacelController.cs" />
     <Compile Include="Controllers\PackageDownloadController.cs" />
     <Compile Include="Controllers\ResendController.cs" />
+    <Compile Include="Controllers\UpgradeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -350,14 +351,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Text.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="h5\0-index.html" />
-    <Content Include="h5\1-1.html" />
-    <Content Include="h5\1-2.html" />
-    <Content Include="h5\1-3.html" />
-    <Content Include="h5\2-1.html" />
-    <Content Include="h5\2-2.html" />
-    <Content Include="h5\ajax.js" />
-    <Content Include="h5\web-server.js" />
     <Content Include="Models\Text.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Text.edmx</DependentUpon>

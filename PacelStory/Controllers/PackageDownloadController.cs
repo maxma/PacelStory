@@ -21,7 +21,7 @@ namespace PacelStory.Controllers
                 if (Request.UserAgent.Contains("iPhone") || Request.UserAgent.Contains("iPod") || Request.UserAgent.Contains("iPad"))
                 {
 
-                    return Redirect("https://itunes.apple.com/us/app/zhi-jian-she-qu-yong-hu-ban/id888720769?l=zh&ls=1&mt=8");
+                    return Redirect("https://itunes.apple.com/us/app/zhi-jian-she-qu/id888720769?l=zh&ls=1&mt=8");
                 }
                 else
                 {

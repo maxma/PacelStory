@@ -32,7 +32,7 @@ namespace PacelStory.Controllers
                 long effectedCustomerId = 0;
                 long returnPacelId = 0;
 
-                if (pacelAndCustomer == null || pacelAndCustomer.pacel == null || pacelAndCustomer.customer.mobile == null || pacelAndCustomer.customer.mobile.Trim() == "" || pacelAndCustomer.pacel.logisticsId.Trim() == "")
+                if (pacelAndCustomer == null || pacelAndCustomer.pacel == null || pacelAndCustomer.customer.mobile == null || pacelAndCustomer.pacel.logisticsId == null || pacelAndCustomer.customer.mobile.Trim() == "" || pacelAndCustomer.pacel.logisticsId.Trim() == "")
                 {
                     PacelAndCustomer item = new PacelAndCustomer();
                     rs = CommonUtility.FormatResponseString(-1, "Failed,cannot read object from body");
