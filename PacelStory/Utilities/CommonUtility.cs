@@ -108,6 +108,16 @@ namespace PacelStory.Utilities
             return rd;
         }
 
+        public static UpgradeResponseString FormatUpgradeResponseString(int code, int forceUpgrade, string message)
+        {
+            UpgradeResponseString urs = new UpgradeResponseString();
+            urs.code = code;
+            urs.forceUpgrade = forceUpgrade;
+            urs.message = message;
+
+            return urs;
+        }
+
         public static int SendText(string targetMobile, string communityService, string tempString2, string content)
         {
             TextRepository tr = new TextRepository();
@@ -141,6 +151,13 @@ namespace PacelStory.Utilities
     public class ResponseString
     {
         public int code;
+        public string message;
+    }
+
+    public class UpgradeResponseString
+    {
+        public int code;
+        public int forceUpgrade;
         public string message;
     }
 

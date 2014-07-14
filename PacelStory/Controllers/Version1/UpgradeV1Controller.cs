@@ -8,11 +8,12 @@ using System.Web.Http;
 
 namespace PacelStory.Controllers
 {
-    public class UpgradeController : ApiController
+    [RoutePrefix("api/v1/Upgrade")]
+    public class UpgradeV1Controller : ApiController
     {
         UpgradeResponseString urs = new UpgradeResponseString();
 
-        [Route("api/Upgrade/IsUpgradeIOS/{versionNumber}")]
+        [Route("IsUpgradeIOS/{versionNumber}")]
         [HttpGet]
         [Authorize]
         public HttpResponseMessage IsUpgradeIOS(string versionNumber)
@@ -46,7 +47,7 @@ namespace PacelStory.Controllers
             
         }
 
-        [Route("api/Upgrade/IsUpgradeAndroid/{versionNumber}")]
+        [Route("IsUpgradeAndroid/{versionNumber}")]
         [HttpGet]
         [Authorize]
         public HttpResponseMessage IsUpgradeAndroid(string versionNumber)

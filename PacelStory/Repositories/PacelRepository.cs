@@ -17,7 +17,12 @@ namespace PacelStory.Repositories
             
         }
 
-        
+        /// <summary>
+        /// 用户还没有取走的包裹
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="pageNumber"></param>
+        /// <returns></returns>
         public IEnumerable<Pacel> GetUnSignedPacelsByCustomerId(long customerId, int pageNumber)
         {            
             using (PacelDbEntities entities = new PacelDbEntities())
@@ -38,6 +43,43 @@ namespace PacelStory.Repositories
                 if (innerRows != -1)
                 {
                     pacelList = entities.Pacel.Where(x => x.customerId == customerId && x.type == "0").OrderByDescending(i => i.arrivedDate).Skip(innerRows).Take(pageSize).ToList<Pacel>();
+
+                    return pacelList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 此物业人员录入，但还没有被用户拿走的包裹
+        /// </summary>
+        /// <param name="customerType2Id"></param>
+        /// <param name="pageNumber"></param>
+        /// <returns></returns>
+        public IEnumerable<Pacel> GetUnSignedPacelsByCustomerType2Id(long customerType2Id, int pageNumber)
+        {
+            using (PacelDbEntities entities = new PacelDbEntities())
+            {
+                List<Pacel> pacelList = new List<Pacel>();
+                //List<ArticleWithImageList> articleListWithImageList = new List<ArticleWithImageList>();
+
+                int innerRows = -1;
+                try
+                {
+                    innerRows = (pageNumber - 1) * pageSize;
+                }
+                catch (Exception)
+                {
+                    throw new Exception("pageNumber or pageSize is not INT");
+                }
+
+                if (innerRows != -1)
+                {
+                    pacelList = entities.Pacel.Where(x => x.wuyeId == customerType2Id && x.type == "0").OrderByDescending(i => i.arrivedDate).Skip(innerRows).Take(pageSize).ToList<Pacel>();
 
                     return pacelList;
                 }
