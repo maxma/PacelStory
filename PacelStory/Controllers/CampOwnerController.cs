@@ -46,7 +46,13 @@ namespace PacelStory.Controllers
             try
             {
                 if (item == null || item.campOwner == null || item.community == null || item.campStaffMobileList == null || item.campStaffMobileList.Count == 0)
-                {                    
+                {
+                    // for debugging
+                    //CampOwnerAndCommunity coac = new CampOwnerAndCommunity();
+                    //List<string> ls = new List<string>();
+                    //ls.Add("18158101606");
+                    //coac.campStaffMobileList = ls;
+
                     co_responseString = CommonUtility.FormatCampOwnerResponseString(-1, 0, "Failed,can not read object from body or no mobile input");
                     return Request.CreateResponse(HttpStatusCode.BadRequest, co_responseString);
                 }
@@ -69,8 +75,8 @@ namespace PacelStory.Controllers
                         customer.campCode = item.community.campCode;
 
                         long effectedCustomerId = 0;
-                        Customer customerTemp = customerRepository.GetSpecifiedCustomerByMoble(mobile);
-                        if (customerTemp == null || customerTemp.type.Trim() == "0")  // 不存在 或者 存在的该物业人员本身自己也是一个用户，则创建一个 customer type 2
+                        Customer customerTemp = customerRepository.GetSpecifiedCustomerType2ByMoble(mobile);
+                        if (customerTemp == null)  // 不存在该物业， 则创建一个 customer type 2
                         {
                             effectedCustomerId = customerRepository.CreateCustomer(customer);
                             if (effectedCustomerId == 0)

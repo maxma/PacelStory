@@ -34,9 +34,9 @@ namespace PacelStory.Controllers
 
                 if (pacelAndCustomer == null || pacelAndCustomer.pacel == null || pacelAndCustomer.customer.mobile == null || pacelAndCustomer.pacel.logisticsId == null || pacelAndCustomer.customer.mobile.Trim() == "" || pacelAndCustomer.pacel.logisticsId.Trim() == "")
                 {
-                    PacelAndCustomer item = new PacelAndCustomer();
+                    // PacelAndCustomer item = new PacelAndCustomer();  // for debugging
                     rs = CommonUtility.FormatResponseString(-1, "Failed,cannot read object from body");
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, item);
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, rs);
                 }
                 else
                 {

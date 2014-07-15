@@ -201,7 +201,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CampOwnerController.cs" />
-    <Compile Include="Controllers\CommunityController.cs" />
+    <Compile Include="Controllers\CommunityController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\CustomerType2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -212,6 +214,7 @@
     <Compile Include="Controllers\UpgradeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\Version1\CampOwnerV1Controller.cs" />
+    <Compile Include="Controllers\Version2\CommunityV2Controller.cs" />
     <Compile Include="Controllers\Version1\CommunityV1Controller.cs" />
     <Compile Include="Controllers\Version1\CustomerV1Controller.cs" />
     <Compile Include="Controllers\Version1\CustomerType2V1Controller.cs" />

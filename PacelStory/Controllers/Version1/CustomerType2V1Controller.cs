@@ -38,7 +38,7 @@ namespace PacelStory.Controllers
                 {
                     PacelAndCustomer item = new PacelAndCustomer();
                     rs = CommonUtility.FormatResponseString(-1, "Failed,cannot read object from body");
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, item);
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, rs);
                 }
                 else
                 {
