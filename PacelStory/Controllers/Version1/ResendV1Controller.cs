@@ -64,8 +64,9 @@ namespace PacelStory.Controllers
                                 {
                                     // 发送一条短信
 
-
-                                    string messageText = wuye.campname == null ? "" : wuye.campname + community.communityService == null ? "" : community.communityService + "希望您快点来领包裹啦, 您有一个包裹存在" + community.communityService + "超过1天，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                                    wuye.campname = wuye.campname == null ? "" : wuye.campname;
+                                    community.communityService = community.communityService == null ? "" : community.communityService;
+                                    string messageText = wuye.campname + community.communityService + "希望您快点来领包裹啦, 您有一个包裹存在" + community.communityService + "超过1天，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "下载手机应用查看快递信息 " + CommonUtility.downloadUrl + " " + CommonUtility.productName;
                                     CommonUtility.SendText(customer.mobile, "", "", messageText);
 
                                     prs = CommonUtility.FormatPacelResponseString(0, pacelId, "Succeed,created items in db success");
@@ -84,7 +85,9 @@ namespace PacelStory.Controllers
                                 if (span.Days >= 1)  // 一个自然天内只能催促一次
                                 {
                                     // 发送一条短信
-                                    string messageText = wuye.campname == null ? "" : wuye.campname + community.communityService == null ? "" : community.communityService + "希望您快点来领包裹啦, 您有一个包裹存在" + community.communityService + "超过1天，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                                    wuye.campname = wuye.campname == null ? "" : wuye.campname;
+                                    community.communityService = community.communityService == null ? "" : community.communityService;
+                                    string messageText = wuye.campname + community.communityService + "希望您快点来领包裹啦, 您有一个包裹存在" + community.communityService + "超过1天，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "下载手机应用查看快递信息 " + CommonUtility.downloadUrl + " " + CommonUtility.productName;
                                     CommonUtility.SendText(customer.mobile, "", "", messageText);
 
                                     prs = CommonUtility.FormatPacelResponseString(0, pacelId, "Succeed,resend text");
