@@ -34,18 +34,26 @@ namespace PacelStory.Controllers
                 long effectedCustomerId = 0;
                 long returnPacelId = 0;
 
-                if (pacelAndCustomer == null || pacelAndCustomer.pacel == null || pacelAndCustomer.customer.mobile == null || pacelAndCustomer.pacel.logisticsId == null || pacelAndCustomer.customer.mobile.Trim() == "" || pacelAndCustomer.pacel.logisticsId.Trim() == "" || !CommonUtility.IsDigit09(pacelAndCustomer.customer.mobile.Trim()))
+                if (pacelAndCustomer == null || pacelAndCustomer.pacel == null || pacelAndCustomer.customer.mobile == null || pacelAndCustomer.pacel.logisticsId == null || pacelAndCustomer.customer.mobile.Trim() == "" || pacelAndCustomer.pacel.logisticsId.Trim() == "" || !CommonUtility.IsDigit09(pacelAndCustomer.customer.mobile.Trim()) || pacelAndCustomer.customer.mobile.Trim().Length != 11)
                 {
-                    PacelAndCustomer item = new PacelAndCustomer();
-                    rs = CommonUtility.FormatResponseString(-1, "失败了，输入格式不对，亲爱的！");
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, rs);
+                    // PacelAndCustomer item = new PacelAndCustomer();    // for debugging
+                    if (pacelAndCustomer.customer.mobile.Trim().Length != 11)
+                    {
+                        rs = CommonUtility.FormatResponseString(-2, "输入错了，电话号码应该是11位，亲爱的！");
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, rs);
+                    }
+                    else
+                    {
+                        rs = CommonUtility.FormatResponseString(-1, "失败了，输入格式不对，亲爱的！");
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, rs);
+                    }
                 }
                 else
                 {
                     // 利用物业人员数据，创建本社区用户
                     CustomerRepository cr = new CustomerRepository();
 
-                    // PacelRepository pr = new PacelRepository();
+                    // 获取用户人员信息
                     Customer tempCustomer = cr.GetSpecifiedCustomerByMoble(pacelAndCustomer.customer.mobile);
 
                     // 获取物业人员信息

@@ -43,7 +43,7 @@ namespace PacelStory.Controllers
                     // 利用物业人员数据，创建本社区用户
                     CustomerRepository cr = new CustomerRepository();
 
-                    // PacelRepository pr = new PacelRepository();
+                    // 获取用户人员信息
                     Customer tempCustomer = cr.GetSpecifiedCustomerByMoble(pacelAndCustomer.customer.mobile);
 
                     // 获取物业人员信息
@@ -123,7 +123,7 @@ namespace PacelStory.Controllers
                         {
                             wuye.campname = wuye.campname == null ? "" : wuye.campname;
                             community.communityService = community.communityService == null ? "" : community.communityService;
-                            string content = wuye.campname + community.communityService + "提醒您, 您有一个包裹已经到达，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                            string content = wuye.campname + community.communityService + "提醒您, 您有一个包裹已经达到，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
                             CommonUtility.SendText(tempCustomer.mobile, "", "", content);
                         }
 
@@ -152,8 +152,44 @@ namespace PacelStory.Controllers
                         // 该用户包裹已经存在，只赋值 pacelId
                         returnPacelId = tempPacel.pacelId;
 
-                        rs = CommonUtility.FormatResponseString(-2, "此快递已经录入过，重复输入啦！");
-                        return Request.CreateResponse(HttpStatusCode.NotModified, rs);
+                        // 兼容 IOS bug, logisticsId IOS 写死了， 一直是重复的，所以每个快递都发
+
+                        // 发 物流包裹 短信  
+                        #region send pacel text
+
+                        Community community = communityRepo.GetSpecifiedCommunityById((long)wuye.communityId);
+                        if (community == null)
+                        {
+                            rs = CommonUtility.FormatResponseString(-1, "Failed,community does not exist!");
+                            return Request.CreateResponse(HttpStatusCode.BadRequest, rs);
+                        }
+                        else
+                        {
+                            wuye.campname = wuye.campname == null ? "" : wuye.campname;
+                            community.communityService = community.communityService == null ? "" : community.communityService;
+                            string content = wuye.campname + community.communityService + "提醒您, 您有一个包裹已经达到，请安排好时间及时领取。" + CommonUtility.productName + " " + community.communityService + "已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                            CommonUtility.SendText(tempCustomer.mobile, "", "", content);
+                        }
+
+
+
+                        //TextRepository tr = new TextRepository();
+                        //// struct textFormat
+                        //tbl_smsmt_send textFormat = new tbl_smsmt_send();
+                        //textFormat.account = "2521494";
+                        //textFormat.mobile = tempCustomer.mobile;
+
+                        //string productName = "【指尖社区】";
+
+
+                        //textFormat.content = pacelAndCustomer.customer.campname + "物业提醒您, 您有一个包裹已经达到物业，请安排好时间及时领取。" + productName + " 物业已经升级，下载手机应用查看包裹信息 " + CommonUtility.downloadUrl;
+                        //textFormat.smsid = "0567898f30e658dbff5a";
+                        //textFormat.priority = 1;
+                        //textFormat.SubmitTime = DateTime.Now;
+
+                        //int sendSuccess = tr.CreateText(textFormat);
+                        #endregion
+
                     }
 
 
