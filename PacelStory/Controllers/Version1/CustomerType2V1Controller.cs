@@ -161,7 +161,7 @@ namespace PacelStory.Controllers
                         returnPacelId = tempPacel.pacelId;
 
                         rs = CommonUtility.FormatResponseString(-2, "此快递已经录入过，重复输入啦！");
-                        return Request.CreateResponse(HttpStatusCode.NotModified, rs);
+                        return Request.CreateResponse(HttpStatusCode.OK, rs);
                     }               
 
                     if (effectedCustomerId != 0 && returnPacelId != 0)
