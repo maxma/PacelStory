@@ -18,7 +18,7 @@ namespace PacelStory.Controllers
         CampOwnerRepository campOwnerRepository = new CampOwnerRepository();
         CommunityRepository communityRepositoy = new CommunityRepository();
         CustomerRepository customerRepository = new CustomerRepository();
-
+                
         // POST api/values     H5 验证用户名密码 调用此接口
         
         [HttpGet]
@@ -43,6 +43,12 @@ namespace PacelStory.Controllers
         [ActionName("CreateCustomerIntoCommunity")]
         public HttpResponseMessage CreateCustomerIntoCommunity([FromBody]CampOwnerAndCommunity item)
         {
+            // 
+            log4net.ILog logger = log4net.LogManager.GetLogger(typeof(CampOwnerController));
+            logger.Info("123");
+            logger.Info(item.community.province);
+            logger.Info(item.community.campname);
+           
             try
             {
                 if (item == null || item.campOwner == null || item.community == null || item.campStaffMobileList == null || item.campStaffMobileList.Count == 0)
