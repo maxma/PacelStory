@@ -217,6 +217,7 @@
     <Compile Include="Controllers\UpgradeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\Version1\CampOwnerV1Controller.cs" />
+    <Compile Include="Controllers\Version2\CampOwnerV2Controller.cs" />
     <Compile Include="Controllers\Version2\CommunityV2Controller.cs" />
     <Compile Include="Controllers\Version1\CommunityV1Controller.cs" />
     <Compile Include="Controllers\Version1\CustomerV1Controller.cs" />
@@ -225,6 +226,12 @@
     <Compile Include="Controllers\Version1\PacelV1Controller.cs" />
     <Compile Include="Controllers\Version1\ResendV1Controller.cs" />
     <Compile Include="Controllers\Version1\UpgradeV1Controller.cs" />
+    <Compile Include="Controllers\Version2\CustomerType2V2Controller.cs" />
+    <Compile Include="Controllers\Version2\CustomerV2Controller.cs" />
+    <Compile Include="Controllers\Version2\PacelAndCustomerV2Controller.cs" />
+    <Compile Include="Controllers\Version2\PacelV2Controller.cs" />
+    <Compile Include="Controllers\Version2\ResendV2Controller.cs" />
+    <Compile Include="Controllers\Version2\UpgradeV2Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
